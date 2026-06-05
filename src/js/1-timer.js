@@ -24,7 +24,7 @@ const calendarConfiguration = {
   onClose(selectedDates) {
     const designatedTimestamp = selectedDates[0];
 
-    if (designatedTimestamp < new Date()) {
+    if (designatedTimestamp <= new Date()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
@@ -59,7 +59,6 @@ function executeChronometerRefresh() {
     clearInterval(liveChronometerId);
     renderTimeMetrics({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    // ФІКС: повертаємо інтерфейс у вихідний стан згідно з ТЗ
     uiControls.dateInputElement.disabled = false;
     uiControls.actionStartBtn.disabled = true;
 
@@ -71,7 +70,7 @@ function executeChronometerRefresh() {
     return;
   }
 
-  const accurateTimeMatrix = breakDownMilliseconds(runtimeMilliDelta);
+  const accurateTimeMatrix = convertMs(runtimeMilliDelta);
   renderTimeMetrics(accurateTimeMatrix);
 }
 
@@ -86,7 +85,7 @@ function formatWithDoubleDigits(numericalValue) {
   return String(numericalValue).padStart(2, '0');
 }
 
-function breakDownMilliseconds(ms) {
+function convertMs(ms) {
   const absoluteSecondUnit = 1000;
   const absoluteMinuteUnit = absoluteSecondUnit * 60;
   const absoluteHourUnit = absoluteMinuteUnit * 60;
