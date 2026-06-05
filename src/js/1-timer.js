@@ -58,7 +58,10 @@ function executeChronometerRefresh() {
   if (runtimeMilliDelta <= 0) {
     clearInterval(liveChronometerId);
     renderTimeMetrics({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    uiControls.dateInputElement.disabled = false; // Release input element access
+
+    // ФІКС: повертаємо інтерфейс у вихідний стан згідно з ТЗ
+    uiControls.dateInputElement.disabled = false;
+    uiControls.actionStartBtn.disabled = true;
 
     iziToast.success({
       title: 'Finished',

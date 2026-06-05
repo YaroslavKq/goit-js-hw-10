@@ -3,32 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asynchronous Snackbar Dispatcher</title>
+    <title>Snackbar</title>
   </head>
   <body>
-    <form class="form async-dispatcher-form">
-      <label class="input-duration-field">
+    <form class="form">
+      <label>
         Delay (ms)
         <input type="number" name="delay" required />
       </label>
 
-      <fieldset class="resolution-state-group">
-        <legend>Target Outcome</legend>
-        <label class="radio-option-label">
+      <fieldset>
+        <legend>State</legend>
+        <label>
           <input type="radio" name="state" value="fulfilled" required />
           Fulfilled
         </label>
-        <label class="radio-option-label">
+        <label>
           <input type="radio" name="state" value="rejected" required />
           Rejected
         </label>
       </fieldset>
 
-      <button type="submit" class="submit-trigger-btn">
-        Create notification
-      </button>
+      <button type="submit">Create notification</button>
     </form>
 
-    <script type="module" src="/js/2-snackbar.js"></script>
+    <script type="module" src="./js/2-snackbar.js"></script>
   </body>
 </html>
